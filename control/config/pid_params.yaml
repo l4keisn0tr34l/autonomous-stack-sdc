@@ -1,0 +1,12 @@
+pid:
+  ros__parameters:
+    topicError: "/path_error"
+    topicControl: "/cmd"
+    kp: 1.5
+    kd: 0.1
+    ki: 0.1
+    velocity: 0.4
+    maxError: 6.0
+    maxSteeringAngle: 0.5
+    minInterval: 0.01
+    use_sim_time: True

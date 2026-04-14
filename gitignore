@@ -1,0 +1,15 @@
+build/
+install/
+log/
+
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.DS_Store
+**/.vscode/
+
+*.pt
+*.onnx
+*.bag
+*.db3
+*.zip

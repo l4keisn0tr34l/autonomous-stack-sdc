@@ -1,0 +1,7 @@
+deadReckoning:
+  ros__parameters:
+    topicOdom: "/odom"
+    topicVel: "/vel"
+    topicIMU: "/imu"
+    minTimeInterval: 0.01
+    use_sim_time: True

@@ -1,0 +1,9 @@
+simpleMapping:
+  ros__parameters:
+    topicClusters: "/fusion/cones"
+    topicOdom: "/odom"
+    topicMapArr: "/map_arr"
+    topicMapVis: "/map"
+    matchDistanceThresh: 2.0
+    coneDistanceThresh: 12.0
+    use_sim_time: True
