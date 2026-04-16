@@ -9,20 +9,56 @@ This repository contains the main software pipeline for:
 - path planning
 - control
 
-The current real-world runtime flow is:
+This README is written for the **real-car runtime path**, not just the older sim-only flow.
 
-1. Camera node  
-2. LiDAR node  
-3. Ground removal  
-4. Clustering  
-5. YOLO  
-6. Fusion  
-7. Debug overlay (optional but strongly recommended)  
-8. `coord_to_arr`  
-9. Colored mapping  
-10. Planning / control nodes
+---
 
-This repository is intended for a ROS 2 workspace and is organized around modular packages for each stage of the stack.
+## Current Real-World Runtime Flow
+
+1. OAK-D LR camera driver
+2. RS-LiDAR M1P driver
+3. Ground removal
+4. Clustering
+5. YOLO
+6. Fusion
+7. Debug overlay *(recommended during setup / calibration)*
+8. `coord_to_arr`
+9. Colored mapping
+10. Planning
+11. Control
+
+The key real-world perception chain is:
+
+```text
+/oak/rgb/image_raw + /oak/rgb/camera_info
+                    │
+                    └──> YOLO → /yolo/detections
+
+/rslidar_points
+    └──> ground removal → clustering → /Clusters (CoordinateList)
+
+ /Clusters + /yolo/detections + /oak/rgb/camera_info
+                    └──> fusion → /fused_cones (CoordinateList, non-destructive)
+
+ /fused_cones
+    └──> coord_to_arr → /Clusters (Arrofarr for legacy mapping input)
+
+ /Clusters + /odom
+    └──> coloredMapping → /map_arr
+
+ /map_arr + /odom
+    └──> midPointColored → /cone_pair
+
+ /cone_pair + /odom
+    └──> midPointErrorPropogator → /path_error
+
+ /path_error
+    └──> control
+```
+
+> Important: the fusion node is now **non-destructive**.  
+> Every LiDAR cone is published forward. Matched cones get semantic color; unmatched cones are still published as `unknown`.  
+> This prevents mapping from dropping valid far cones just because vision failed to match them.
 
 ---
 
@@ -53,64 +89,109 @@ autonomous-stack-sdc/
 ## Main Packages
 
 ### Perception
-- `perception/lidar/ground-removal`  
-  Removes ground points from raw LiDAR point clouds.
 
-- `perception/lidar/clustering`  
-  Clusters non-ground LiDAR points into cone candidates.
+#### `perception/lidar/ground-removal`
+Removes ground points from raw LiDAR clouds.
 
-- `perception/camera/yolo_ros`  
-  Runs YOLO-based visual detection on the camera stream.
+#### `perception/lidar/clustering`
+Clusters non-ground LiDAR points into cone candidates.
 
-- `perception/sensorfusion`  
-  Fuses LiDAR clusters and camera detections, provides debug visualization, and converts fused cones into mapping input format.
+#### `perception/camera/yolo_ros`
+Runs YOLO-based cone detection on the camera stream.
+
+#### `perception/sensorfusion`
+Contains:
+- `sensor_fusion_node`
+- `debug_overlay`
+- `coord_to_arr`
+
+This package:
+- projects LiDAR cluster centers into the image plane
+- associates projected LiDAR cones with YOLO bounding boxes
+- publishes `/fused_cones`
+- visualizes boxes + projected cones for debugging
+- converts fused output into the legacy array format expected by mapping
+
+---
 
 ### Messages
-- `sdc_msgs`  
-  Custom message definitions used across the stack.
+
+#### `sdc_msgs`
+Custom message definitions used across the stack, including:
+- `Coordinate`
+- `CoordinateList`
+- `Arr`
+- `Arrofarr`
+
+---
 
 ### SLAM / Mapping
-- `slam/core/mapping1`  
-  Builds a colored cone map from fused perception output and odometry.
 
-- `slam/core/odometry`  
-  Odometry support package.
+#### `slam/core/mapping1`
+Builds a colored cone map from fused perception output and odometry.
+
+Current mapping is **2D colored cone mapping**, not full SLAM in the probabilistic sense.
+
+---
 
 ### Planning
-- `path_planning1`  
-  Midpoint-based path planning and related utilities.
+
+#### `path_planning1`
+Midpoint-based planning stack, including:
+- `midPoint`
+- `midPointColored`
+- `midPointErrorPropogator`
+- `coneLineViz`
+
+---
 
 ### Control
-- `control`  
-  PID-based control node.
+
+#### `control`
+PID-based downstream controller.
 
 ---
 
 ## Hardware Driver Requirements
 
-This stack depends on external sensor driver repositories in addition to the code in this repo.
+This repository depends on external driver repositories that are **not included** here.
 
-### Camera: Luxonis OAK-D LR
+### Camera — Luxonis OAK-D LR
+
 Required external repository:
 - `depthai_ros`
 
-Clone link:
+Clone:
 ```bash
 git clone https://github.com/luxonis/depthai-ros.git
 ```
 
-### LiDAR: RoboSense RS-LiDAR M1P
+Expected camera topics used by this stack:
+```text
+/oak/rgb/image_raw
+/oak/rgb/camera_info
+```
+
+---
+
+### LiDAR — RoboSense RS-LiDAR M1P
+
 Required external repository:
 - `rslidar_sdk`
 
-Clone link:
+Clone:
 ```bash
 git clone https://github.com/RoboSense-LiDAR/rslidar_sdk.git
 ```
 
-> These driver repositories are not part of this repo by default. Clone them into the same ROS 2 workspace `src/` directory alongside this repository before building.
+Expected LiDAR input topic for the perception chain:
+```text
+/rslidar_points
+```
 
-Example workspace layout:
+---
+
+### Example Workspace Layout
 
 ```text
 ~/autonomous_ws/src/
@@ -121,29 +202,44 @@ Example workspace layout:
 
 ---
 
+## Additional Visual / YOLO Requirements
+
+### YOLO package notes
+This stack expects the visual detection stage to be available and properly configured.
+
+If you are also using the separate weights / visual setup repository, keep that consistent with the YOLO node configuration.
+
+### NumPy note
+Use:
+
+```bash
+pip install "numpy<2"
+```
+
+This is important because some parts of the older visual / ONNX / ROS tooling are still safer with NumPy 1.x.
+
+---
+
 ## Prerequisites
 
-This repository assumes:
-
-- **Ubuntu 22.04**
-- **ROS 2 Humble**
+Assumes:
+- Ubuntu 22.04
+- ROS 2 Humble
 - `colcon`
 - `rosdep`
 - Python 3
 - OpenCV
 - PCL
 - TBB
-- a working OAK-D LR driver via `depthai_ros`
-- a working RS-LiDAR M1P driver via `rslidar_sdk`
-- NVIDIA CUDA support if GPU-accelerated YOLO inference is desired
+- working OAK-D LR driver via `depthai_ros`
+- working RS-LiDAR M1P driver via `rslidar_sdk`
 
-> This stack may still build without CUDA, but real-time YOLO performance usually requires GPU acceleration.
+Optional but strongly recommended:
+- NVIDIA GPU / CUDA if real-time YOLO is expected
 
 ---
 
 ## Core Dependencies
-
-Some dependencies are declared in `package.xml`, but users may still need to install system dependencies manually.
 
 ### ROS / apt dependencies
 
@@ -183,26 +279,22 @@ sudo apt install -y \
 pip install "numpy<2" opencv-python typing-extensions
 ```
 
-For YOLO:
-
+YOLO / vision-related:
 ```bash
 pip install ultralytics==8.3.168 lap>=0.5.12
 ```
 
-If ONNX inference is used:
-
+If ONNX is used:
 ```bash
 pip install onnx onnxruntime
 ```
 
-If GPU ONNX inference is used:
-
+If GPU ONNX runtime is used:
 ```bash
 pip install onnxruntime-gpu
 ```
 
-If PyTorch GPU inference is used anywhere in the visual stack:
-
+If PyTorch inference is used:
 ```bash
 pip install torch torchvision
 ```
@@ -211,9 +303,7 @@ pip install torch torchvision
 
 ## CUDA / GPU Notes
 
-YOLO inference may require additional NVIDIA dependencies for usable real-time performance.
-
-Recommended checks:
+Useful checks:
 
 ```bash
 nvidia-smi
@@ -221,25 +311,17 @@ nvcc --version
 python3 -c "import torch; print(torch.cuda.is_available())"
 ```
 
-You may need:
-- NVIDIA GPU driver
-- CUDA Toolkit
-- cuDNN
-- CUDA-compatible PyTorch or ONNX Runtime
-
-> The rest of the stack is not inherently CUDA-dependent, but the camera detection pipeline may be too slow on CPU for practical use.
+The rest of the stack is not strictly CUDA-dependent, but the visual stage may be too slow on CPU for practical real-time use.
 
 ---
 
 ## Workspace Setup
 
-Clone everything into a ROS 2 workspace:
-
 ```bash
 mkdir -p ~/autonomous_ws/src
 cd ~/autonomous_ws/src
 
-git clone <your-repo-url>
+git clone https://github.com/l4keisn0tr34l/autonomous-stack-sdc
 git clone https://github.com/luxonis/depthai-ros.git
 git clone https://github.com/RoboSense-LiDAR/rslidar_sdk.git
 
@@ -253,7 +335,7 @@ sudo rosdep init
 rosdep update
 ```
 
-Install dependencies from package manifests:
+Install dependencies from manifests:
 
 ```bash
 rosdep install --from-paths src --ignore-src -r -y
@@ -267,38 +349,30 @@ colcon build --symlink-install
 source install/setup.bash
 ```
 
-> If custom messages fail to resolve, make sure `sdc_msgs` is included in the workspace and rebuild the workspace after sourcing ROS 2 correctly.
+If custom messages fail to resolve, make sure:
+- `sdc_msgs` is present
+- ROS 2 is sourced before build
+- the workspace is rebuilt after message changes
 
 ---
 
 ## Launch / Run Order
 
-The stack should be run in the following order.
+### 1. Camera driver
+Bring up `depthai_ros` first.
 
-### 1. Camera node
-Sensor:
-- **Luxonis OAK-D LR**
-
-Driver repository:
-- `depthai_ros`
-
-Expected camera topics for the perception stack include:
-
+Expected topics:
 ```text
 /oak/rgb/image_raw
 /oak/rgb/camera_info
 ```
 
-Bring up the camera driver from `depthai_ros` first.
+---
 
-### 2. LiDAR node
-Sensor:
-- **RoboSense RS-LiDAR M1P**
+### 2. LiDAR driver
+Bring up `rslidar_sdk` so `/rslidar_points` is live.
 
-Driver repository:
-- `rslidar_sdk`
-
-Bring up the LiDAR driver first so that raw point clouds are being published before ground removal starts.
+---
 
 ### 3. Ground removal
 Package:
@@ -306,10 +380,12 @@ Package:
 perception/lidar/ground-removal
 ```
 
-Example launch:
+Example:
 ```bash
 ros2 launch ground_removal simpleZ.launch.py
 ```
+
+---
 
 ### 4. Clustering
 Package:
@@ -317,10 +393,14 @@ Package:
 perception/lidar/clustering
 ```
 
-Example run:
+Example:
 ```bash
 ros2 run clustering boundaryscan
 ```
+
+This produces LiDAR cone candidates.
+
+---
 
 ### 5. YOLO
 Package:
@@ -328,10 +408,17 @@ Package:
 perception/camera/yolo_ros/yolo_bringup
 ```
 
-Example launch:
+Example:
 ```bash
 ros2 launch yolo_bringup yolov9.launch.py
 ```
+
+Expected detection topic:
+```text
+/yolo/detections
+```
+
+---
 
 ### 6. Fusion
 Package:
@@ -339,27 +426,47 @@ Package:
 perception/sensorfusion
 ```
 
-Example run:
+Example:
 ```bash
 ros2 run sensorfusion sensor_fusion_node
 ```
 
-### 7. Debug overlay (optional but recommended)
+Fusion currently:
+- uses LiDAR cluster geometry as base truth
+- assigns color if a YOLO bbox match exists
+- marks unmatched cones as `unknown`
+- publishes all cones forward on `/fused_cones`
+
+Expected output:
+```text
+/fused_cones
+```
+
+---
+
+### 7. Debug overlay *(optional but strongly recommended during setup)*
 Package:
 ```text
 perception/sensorfusion
 ```
 
-Example run:
+Example:
 ```bash
 ros2 run sensorfusion debug_overlay
 ```
 
-This node is optional for operation, but strongly recommended because it helps verify:
+This helps verify:
 - camera intrinsics
-- projection consistency
-- cluster-to-bounding-box association
-- overall fusion sanity
+- cluster projection into the image
+- YOLO / LiDAR alignment
+- current empirical fusion correction quality
+
+Overlay currently visualizes:
+- YOLO boxes
+- projected LiDAR candidate points
+- fused cones
+
+---
 
 ### 8. Fused cone conversion
 Package:
@@ -367,30 +474,74 @@ Package:
 perception/sensorfusion
 ```
 
-Example run:
+Example:
 ```bash
 ros2 run sensorfusion coord_to_arr
 ```
 
-This converts fused cone output into the array format expected by the mapping stage.
+This converts:
 
-### 9. Colored mapping
+```text
+/fused_cones   (CoordinateList)
+      ↓
+/Clusters      (Arrofarr)
+```
+
+This step exists because mapping currently expects legacy array-of-arrays input.
+
+---
+
+### 9. Intermediate TF command before mapping
+Before mapping, run the required TF/static-transform command used in your current integration workflow.
+
+This is the step you mentioned is needed **after `coord_to_arr` and before mapping**.
+
+If your team already has a fixed command for this, place it here in your local setup docs / scripts.
+
+Example placeholder form:
+
+```bash
+# replace with the actual tf2/static transform command your stack uses
+<your_tf2_command_here>
+```
+
+> Keep this step exactly where your current runtime expects it:
+> after fusion/conversion is running, before mapping is launched.
+
+---
+
+### 10. Colored mapping
 Package:
 ```text
 slam/core/mapping1
 ```
 
-Example launch:
+Example:
 ```bash
 ros2 launch mapping1 colorMapping.launch.py
 ```
 
-### 10. Planning / control
-Planning and control are downstream of the mapping output.
+Expected inputs:
+- `/Clusters` (Arrofarr)
+- `/odom`
 
+Expected outputs:
+- `/map_arr`
+- map visualization markers
+
+---
+
+### 11. Planning
 Examples:
 ```bash
 ros2 launch path_planning1 midPointColored.launch.py
+```
+
+---
+
+### 12. Control
+Examples:
+```bash
 ros2 launch control pid.launch.py
 ```
 
@@ -398,32 +549,38 @@ ros2 launch control pid.launch.py
 
 ## Topic Flow Overview
 
-The effective data flow is:
-
 ```text
-Camera image + camera info
-            │
-            ├──> YOLO detections
-            │
-LiDAR raw point cloud
-            │
-            └──> Ground removal ──> Clustering
-                                     │
-                                     └──> LiDAR cone candidates
-YOLO detections + LiDAR cone candidates + camera info
-                                     │
-                                     └──> Sensor fusion
-                                              │
-                                              ├──> /fused_cones
-                                              ├──> debug overlay
-                                              └──> coord_to_arr
-                                                       │
-                                                       └──> /mapping_input
-                                                                │
-                                                                └──> Colored mapping
-                                                                         │
-                                                                         ├──> map output
-                                                                         └──> planning / control
+/oak/rgb/image_raw + /oak/rgb/camera_info
+        │
+        └──> YOLO → /yolo/detections
+
+/rslidar_points
+        │
+        └──> ground removal → clustering → /Clusters (CoordinateList)
+
+ /Clusters + /yolo/detections + /oak/rgb/camera_info
+        │
+        └──> fusion → /fused_cones (CoordinateList, all cones preserved)
+
+ /fused_cones
+        │
+        └──> coord_to_arr → /Clusters (Arrofarr)
+
+ /Clusters + /odom
+        │
+        └──> coloredMapping → /map_arr
+
+ /map_arr + /odom
+        │
+        └──> midPointColored → /cone_pair
+
+ /cone_pair + /odom
+        │
+        └──> midPointErrorPropogator → /path_error
+
+ /path_error
+        │
+        └──> control
 ```
 
 ---
@@ -431,7 +588,7 @@ YOLO detections + LiDAR cone candidates + camera info
 ## Important Internal Packages / Executables
 
 ### `sensorfusion`
-Available console entry points:
+Console entry points:
 - `sensor_fusion_node`
 - `debug_overlay`
 - `coord_to_arr`
@@ -463,16 +620,61 @@ Executable:
 
 ---
 
+## Important Notes on Fusion
+
+### Non-destructive fusion
+This is one of the biggest changes in the real-world stack.
+
+Old brittle behavior:
+```text
+LiDAR cone
+→ if matched with YOLO: keep
+→ else: drop
+```
+
+Current behavior:
+```text
+LiDAR cone
+→ if matched with YOLO: keep with semantic colour
+→ else: keep as unknown
+```
+
+This matters because mapping should not lose geometric cones just because far-box matching failed.
+
+### Why this was necessary
+As cones get farther:
+- YOLO boxes get smaller
+- LiDAR clusters get sparser
+- tiny projection errors matter more
+
+So making fusion non-destructive prevents valid cones from disappearing before mapping.
+
+---
+
+## Mapping Notes
+
+Current mapping is simple and usable, but not especially robust:
+- nearest-neighbor style association
+- odometry-based global projection
+- 2D colored cone map
+- no advanced confidence / covariance / temporal filtering
+
+It works as a baseline, but bad fusion or bad odometry will show up quickly in map quality.
+
+This is exactly why fusion quality and debug overlay sanity matter.
+
+---
+
 ## Common Failure Points
 
-### 1. Camera node is running but YOLO gets no image
+### 1. Camera node runs but YOLO gets no image
 Possible causes:
 - wrong image topic
 - wrong camera info topic
-- `depthai_ros` driver not running
-- topic remap mismatch
+- `depthai_ros` not running
+- remap mismatch
 
-Check:
+Checks:
 ```bash
 ros2 topic list
 ros2 topic echo /oak/rgb/camera_info
@@ -480,35 +682,35 @@ ros2 topic echo /oak/rgb/camera_info
 
 ---
 
-### 2. LiDAR node runs but ground removal shows nothing
+### 2. LiDAR node runs but ground removal sees nothing
 Possible causes:
-- incorrect LiDAR topic name
-- no point cloud being published
-- `rslidar_sdk` driver misconfiguration
-- Ethernet / device connectivity issue
+- wrong LiDAR topic
+- no point cloud
+- `rslidar_sdk` config issue
+- hardware / Ethernet issue
 
-Check:
+Checks:
 ```bash
 ros2 topic list
-ros2 topic hz <lidar_topic>
+ros2 topic hz /rslidar_points
 ```
 
 ---
 
 ### 3. Ground removal publishes empty output
 Possible causes:
-- aggressive filtering parameters
+- aggressive filtering
 - wrong input topic
-- coordinate / frame assumptions
-- invalid point cloud content
+- bad frame assumptions
+- invalid point cloud
 
 ---
 
 ### 4. Clustering publishes no cones
 Possible causes:
-- ground removal removed too much
-- cluster thresholds are too strict
-- point cloud density too low
+- too much ground removed
+- thresholds too strict
+- too little point density
 - wrong input topic
 
 ---
@@ -518,10 +720,11 @@ Possible causes:
 - missing weights
 - missing Python packages
 - broken model path
-- CUDA / ONNX / torch mismatch
-- wrong input image topic
+- ONNX / torch mismatch
+- wrong image topic
+- NumPy version mismatch
 
-Check:
+Checks:
 ```bash
 python3 -c "import torch; print(torch.cuda.is_available())"
 python3 -c "import cv2; print(cv2.__version__)"
@@ -530,60 +733,58 @@ nvidia-smi
 
 ---
 
-### 6. Fusion runs but publishes nothing
+### 6. Fusion runs but outputs nonsense
 Possible causes:
-- no detections from YOLO
-- no clusters from LiDAR branch
-- topic mismatch
-- timing / synchronization issue
-- bad frame assumptions
+- wrong intrinsics
+- wrong image stream
+- bad transform direction
+- stale detections
+- poor empirical correction
 
-Check:
+Checks:
 ```bash
 ros2 topic echo /fused_cones
 ros2 topic hz /fused_cones
 ```
 
-Also verify all upstream topics exist.
+Also use `debug_overlay`.
 
 ---
 
-### 7. Debug overlay shows nonsense or misalignment
+### 7. Debug overlay looks wrong
 Possible causes:
-- wrong camera intrinsics
-- wrong projection assumptions
-- stale detections
-- wrong frame convention
-- extrinsics not matching real setup
-
-This is exactly why the debug overlay is recommended.
+- wrong camera topic
+- wrong camera info
+- projection mismatch
+- stale asynchronous overlay data
+- bad correction values
 
 ---
 
-### 8. `coord_to_arr` runs but mapping receives nothing
+### 8. `coord_to_arr` runs but mapping gets nothing
 Possible causes:
-- wrong fused cone message format
-- wrong mapping input topic
-- converter not subscribed to the real fusion output topic
+- wrong `/fused_cones` topic
+- wrong message conversion
+- mapping subscribed to wrong topic
 
 ---
 
-### 9. Mapping launches but behaves incorrectly
+### 9. Mapping behaves poorly
 Possible causes:
-- no `/mapping_input`
-- no odometry
+- bad `/Clusters`
+- missing `/odom`
 - parameter mismatch
-- launch/config mismatch
-- topic assumptions from sim vs real stack
+- sim-era assumptions still present
+- fusion too sparse
 
 ---
 
-### 10. Planning/control nodes do not work downstream
+### 10. Planning/control fail downstream
 Possible causes:
-- invalid map output
-- missing odometry
+- bad map
+- bad odometry
 - wrong planner input topic
-- control expecting path data that is not being published
+- missing path/error topics
 
 ---
 
@@ -623,7 +824,7 @@ ros2 param get /node_name parameter_name
 
 ## Notes on Custom Messages
 
-This stack uses custom messages from `sdc_msgs`, including:
+This stack uses custom `sdc_msgs`, including:
 - `Coordinate`
 - `CoordinateList`
 - `Arr`
@@ -631,42 +832,44 @@ This stack uses custom messages from `sdc_msgs`, including:
 
 Make sure:
 - `sdc_msgs` is in the same workspace
-- the workspace is built successfully
-- `install/setup.bash` is sourced before launching nodes that depend on these messages
+- workspace builds cleanly
+- `install/setup.bash` is sourced before launch
 
 ---
 
-## Recommended Cleanup / Future Improvements
+## Current Known Rough Edges
 
-This repository is currently runnable as a modular stack, but a cleaner public-facing setup would benefit from:
+- Fusion still uses an empirical correction on top of calibration
+- Mapping still expects legacy `Arrofarr`
+- Debug overlay is useful but not perfectly synchronized
+- Some packages still reflect older naming / sim-era assumptions
 
-- a unified root-level launch file for the perception stage
-- a unified launch file for full stack startup
-- a dedicated `docs/` folder for:
-  - architecture
-  - topic map
-  - troubleshooting
-- removal of purely experimental or legacy files
-- standardization of package descriptions / licenses / maintainer fields
+The stack is usable, but not fully cleaned architecturally yet.
 
-Suggested future launch files:
-- `perception.launch.py`
-- `slam.launch.py`
-- `full_stack.launch.py`
+---
+
+## Recommended Future Improvements
+
+- replace legacy `Arrofarr` mapping input with direct `CoordinateList`
+- centralize projection logic so fusion and overlay cannot drift apart
+- add unified launch files:
+  - `perception.launch.py`
+  - `mapping.launch.py`
+  - `full_stack.launch.py`
+- move real-car calibration / TF commands into a dedicated docs section
+- improve mapping association / confidence handling
 
 ---
 
 ## Final Reminder
 
-This repository contains the stack logic, but successful deployment also depends on:
-- correct hardware drivers
-- correct sensor topics
-- correct calibration / transforms
-- correct workspace sourcing
-- correct GPU / inference environment for YOLO
+If something builds but behaves wrong, the issue is usually **not compilation**.  
+It is usually one of:
 
-If something “runs” but the output is wrong, the issue is often not compilation — it is usually:
-- a topic mismatch
-- a frame mismatch
-- a calibration mismatch
-- or missing upstream data
+- topic mismatch
+- frame mismatch
+- bad camera / LiDAR alignment
+- stale upstream data
+- bad calibration / correction
+- missing driver
+- missing odometry
