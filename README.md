@@ -209,6 +209,8 @@ This stack expects the visual detection stage to be available and properly confi
 
 If you are also using the separate weights / visual setup repository, keep that consistent with the YOLO node configuration.
 
+Go to https://github.com/l4keisn0tr34l/yolo4ros for pre-existing weights and better documentation.
+
 ### NumPy note
 Use:
 
@@ -498,11 +500,9 @@ This is the step you mentioned is needed **after `coord_to_arr` and before mappi
 
 If your team already has a fixed command for this, place it here in your local setup docs / scripts.
 
-Example placeholder form:
 
 ```bash
-# replace with the actual tf2/static transform command your stack uses
-<your_tf2_command_here>
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map oak-d-base-frame
 ```
 
 > Keep this step exactly where your current runtime expects it:
