@@ -1,0 +1,95 @@
+// generated from rosidl_typesupport_c/resource/idl__type_support.cpp.em
+// with input from sdc_msgs:msg/CoordinateList.idl
+// generated code does not contain a copyright notice
+
+#include "cstddef"
+#include "rosidl_runtime_c/message_type_support_struct.h"
+#include "sdc_msgs/msg/detail/coordinate_list__struct.h"
+#include "sdc_msgs/msg/detail/coordinate_list__type_support.h"
+#include "rosidl_typesupport_c/identifier.h"
+#include "rosidl_typesupport_c/message_type_support_dispatch.h"
+#include "rosidl_typesupport_c/type_support_map.h"
+#include "rosidl_typesupport_c/visibility_control.h"
+#include "rosidl_typesupport_interface/macros.h"
+
+namespace sdc_msgs
+{
+
+namespace msg
+{
+
+namespace rosidl_typesupport_c
+{
+
+typedef struct _CoordinateList_type_support_ids_t
+{
+  const char * typesupport_identifier[2];
+} _CoordinateList_type_support_ids_t;
+
+static const _CoordinateList_type_support_ids_t _CoordinateList_message_typesupport_ids = {
+  {
+    "rosidl_typesupport_fastrtps_c",  // ::rosidl_typesupport_fastrtps_c::typesupport_identifier,
+    "rosidl_typesupport_introspection_c",  // ::rosidl_typesupport_introspection_c::typesupport_identifier,
+  }
+};
+
+typedef struct _CoordinateList_type_support_symbol_names_t
+{
+  const char * symbol_name[2];
+} _CoordinateList_type_support_symbol_names_t;
+
+#define STRINGIFY_(s) #s
+#define STRINGIFY(s) STRINGIFY_(s)
+
+static const _CoordinateList_type_support_symbol_names_t _CoordinateList_message_typesupport_symbol_names = {
+  {
+    STRINGIFY(ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_fastrtps_c, sdc_msgs, msg, CoordinateList)),
+    STRINGIFY(ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, sdc_msgs, msg, CoordinateList)),
+  }
+};
+
+typedef struct _CoordinateList_type_support_data_t
+{
+  void * data[2];
+} _CoordinateList_type_support_data_t;
+
+static _CoordinateList_type_support_data_t _CoordinateList_message_typesupport_data = {
+  {
+    0,  // will store the shared library later
+    0,  // will store the shared library later
+  }
+};
+
+static const type_support_map_t _CoordinateList_message_typesupport_map = {
+  2,
+  "sdc_msgs",
+  &_CoordinateList_message_typesupport_ids.typesupport_identifier[0],
+  &_CoordinateList_message_typesupport_symbol_names.symbol_name[0],
+  &_CoordinateList_message_typesupport_data.data[0],
+};
+
+static const rosidl_message_type_support_t CoordinateList_message_type_support_handle = {
+  rosidl_typesupport_c__typesupport_identifier,
+  reinterpret_cast<const type_support_map_t *>(&_CoordinateList_message_typesupport_map),
+  rosidl_typesupport_c__get_message_typesupport_handle_function,
+};
+
+}  // namespace rosidl_typesupport_c
+
+}  // namespace msg
+
+}  // namespace sdc_msgs
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+const rosidl_message_type_support_t *
+ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_c, sdc_msgs, msg, CoordinateList)() {
+  return &::sdc_msgs::msg::rosidl_typesupport_c::CoordinateList_message_type_support_handle;
+}
+
+#ifdef __cplusplus
+}
+#endif

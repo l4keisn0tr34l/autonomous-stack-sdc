@@ -27,6 +27,8 @@ setup(
             'sensor_fusion_node = sensorfusion.nodes.fusion_node:main',
             'debug_overlay = sensorfusion.nodes.debug_overlay:main',
             'coord_to_arr = sensorfusion.nodes.coord_to_arr:main',
+            'sensor_fusion_node_old = sensorfusion.nodes.fusion_node_old:main',
+            'fusion_test = sensorfusion.nodes.fusion_test:main',
         ],
 
     },

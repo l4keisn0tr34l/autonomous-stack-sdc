@@ -1,0 +1,12 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from sdc_msgs/msg/Arr.msg
+// generated code does not contain a copyright notice
+
+
+module sdc_msgs {
+  module msg {
+    struct Arr {
+      sequence<float> data;
+    };
+  };
+};

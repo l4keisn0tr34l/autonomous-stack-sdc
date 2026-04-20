@@ -1,0 +1,204 @@
+[0.043s] Invoking command in '/home/beam/autonomous-stack-sdc/build/sdc_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake --build /home/beam/autonomous-stack-sdc/build/sdc_msgs -- -j16 -l16
+[0.221s] [  1%] Built target sdc_msgs__cpp
+[0.227s] [ 12%] Built target sdc_msgs__rosidl_generator_c
+[0.277s] [ 12%] Built target ament_cmake_python_copy_sdc_msgs
+[0.316s] [ 23%] Built target sdc_msgs__rosidl_typesupport_fastrtps_cpp
+[0.328s] [ 34%] Built target sdc_msgs__rosidl_typesupport_cpp
+[0.340s] [ 56%] Built target sdc_msgs__rosidl_typesupport_introspection_cpp
+[0.340s] [ 56%] Built target sdc_msgs__rosidl_typesupport_introspection_c
+[0.340s] [ 67%] Built target sdc_msgs__rosidl_typesupport_c
+[0.344s] [ 78%] Built target sdc_msgs__rosidl_typesupport_fastrtps_c
+[0.400s] [ 78%] Built target sdc_msgs
+[0.457s] [ 80%] Built target sdc_msgs__py
+[0.523s] [ 89%] Built target sdc_msgs__rosidl_generator_py
+[0.580s] [ 96%] Built target sdc_msgs__rosidl_typesupport_fastrtps_c__pyext
+[0.580s] [ 96%] Built target sdc_msgs__rosidl_typesupport_introspection_c__pyext
+[0.581s] [100%] Built target sdc_msgs__rosidl_typesupport_c__pyext
+[0.811s] running egg_info
+[0.811s] writing sdc_msgs.egg-info/PKG-INFO
+[0.812s] writing dependency_links to sdc_msgs.egg-info/dependency_links.txt
+[0.812s] writing top-level names to sdc_msgs.egg-info/top_level.txt
+[0.815s] reading manifest file 'sdc_msgs.egg-info/SOURCES.txt'
+[0.816s] writing manifest file 'sdc_msgs.egg-info/SOURCES.txt'
+[0.873s] [100%] Built target ament_cmake_python_build_sdc_msgs_egg
+[0.892s] Invoked command in '/home/beam/autonomous-stack-sdc/build/sdc_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake --build /home/beam/autonomous-stack-sdc/build/sdc_msgs -- -j16 -l16
+[0.895s] Invoking command in '/home/beam/autonomous-stack-sdc/build/sdc_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake --install /home/beam/autonomous-stack-sdc/build/sdc_msgs
+[0.911s] -- Install configuration: ""
+[0.911s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/ament_index/resource_index/rosidl_interfaces/sdc_msgs
+[0.912s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs
+[0.912s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg
+[0.913s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/coordinate.h
+[0.913s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/arr.h
+[0.913s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/rosidl_generator_c__visibility_control.h
+[0.913s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail
+[0.914s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__struct.h
+[0.914s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__struct.h
+[0.914s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__functions.c
+[0.914s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__type_support.h
+[0.914s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__functions.h
+[0.914s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__type_support.h
+[0.914s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__functions.h
+[0.915s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__functions.c
+[0.915s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__functions.c
+[0.915s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__type_support.h
+[0.915s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__functions.c
+[0.915s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__struct.h
+[0.915s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__functions.h
+[0.915s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__functions.h
+[0.915s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__type_support.h
+[0.915s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__struct.h
+[0.916s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/coordinate_list.h
+[0.916s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/arrofarr.h
+[0.916s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/environment/library_path.sh
+[0.916s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/environment/library_path.dsv
+[0.916s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/lib/libsdc_msgs__rosidl_generator_c.so
+[0.916s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs
+[0.916s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg
+[0.917s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.917s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail
+[0.917s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__rosidl_typesupport_fastrtps_c.h
+[0.917s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__rosidl_typesupport_fastrtps_c.h
+[0.917s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__rosidl_typesupport_fastrtps_c.h
+[0.917s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__rosidl_typesupport_fastrtps_c.h
+[0.917s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/lib/libsdc_msgs__rosidl_typesupport_fastrtps_c.so
+[0.918s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs
+[0.918s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg
+[0.918s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/coordinate_list.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/arr.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/coordinate.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/arrofarr.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__builder.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__builder.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__struct.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__traits.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__struct.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__struct.hpp
+[0.919s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__builder.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__traits.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__builder.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__type_support.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__type_support.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__struct.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__type_support.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__traits.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__traits.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__type_support.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/dds_fastrtps
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__rosidl_typesupport_fastrtps_cpp.hpp
+[0.920s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__rosidl_typesupport_fastrtps_cpp.hpp
+[0.921s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__rosidl_typesupport_fastrtps_cpp.hpp
+[0.921s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__rosidl_typesupport_fastrtps_cpp.hpp
+[0.921s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.922s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/lib/libsdc_msgs__rosidl_typesupport_fastrtps_cpp.so
+[0.922s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs
+[0.922s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg
+[0.922s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.922s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail
+[0.922s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__type_support.c
+[0.923s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__type_support.c
+[0.923s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__rosidl_typesupport_introspection_c.h
+[0.923s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__type_support.c
+[0.924s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__type_support.c
+[0.924s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__rosidl_typesupport_introspection_c.h
+[0.924s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__rosidl_typesupport_introspection_c.h
+[0.924s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__rosidl_typesupport_introspection_c.h
+[0.924s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/lib/libsdc_msgs__rosidl_typesupport_introspection_c.so
+[0.925s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/lib/libsdc_msgs__rosidl_typesupport_c.so
+[0.925s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs
+[0.925s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg
+[0.925s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail
+[0.925s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__rosidl_typesupport_introspection_cpp.hpp
+[0.925s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__type_support.cpp
+[0.925s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arrofarr__rosidl_typesupport_introspection_cpp.hpp
+[0.925s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__rosidl_typesupport_introspection_cpp.hpp
+[0.925s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/arr__type_support.cpp
+[0.926s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__rosidl_typesupport_introspection_cpp.hpp
+[0.926s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate__type_support.cpp
+[0.926s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/include/sdc_msgs/sdc_msgs/msg/detail/coordinate_list__type_support.cpp
+[0.926s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/lib/libsdc_msgs__rosidl_typesupport_introspection_cpp.so
+[0.931s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/lib/libsdc_msgs__rosidl_typesupport_cpp.so
+[0.933s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/environment/pythonpath.sh
+[0.933s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/environment/pythonpath.dsv
+[0.933s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs-0.0.0-py3.10.egg-info
+[0.933s] -- Installing: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs-0.0.0-py3.10.egg-info/SOURCES.txt
+[0.933s] -- Installing: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs-0.0.0-py3.10.egg-info/PKG-INFO
+[0.934s] -- Installing: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs-0.0.0-py3.10.egg-info/dependency_links.txt
+[0.935s] -- Installing: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs-0.0.0-py3.10.egg-info/top_level.txt
+[0.935s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs
+[0.936s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/libsdc_msgs__rosidl_generator_py.so
+[0.936s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/sdc_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.936s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/_sdc_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[0.936s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/sdc_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.936s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/__init__.py
+[0.936s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg
+[0.936s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg/_coordinate_list.py
+[0.936s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg/_coordinate_s.c
+[0.936s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg/_arrofarr.py
+[0.939s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg/_arr.py
+[0.939s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg/__init__.py
+[0.939s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg/_coordinate.py
+[0.939s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg/_arr_s.c
+[0.939s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg/_coordinate_list_s.c
+[0.939s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg/_arrofarr_s.c
+[0.939s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/_sdc_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[0.939s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/sdc_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.939s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/_sdc_msgs_s.ep.rosidl_typesupport_c.c
+[0.981s] Listing '/home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs'...
+[0.981s] Listing '/home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/msg'...
+[1.000s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/sdc_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.000s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/sdc_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.000s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/local/lib/python3.10/dist-packages/sdc_msgs/sdc_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.001s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/lib/libsdc_msgs__rosidl_generator_py.so
+[1.001s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/msg/Arr.idl
+[1.001s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/msg/Arrofarr.idl
+[1.001s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/msg/Coordinate.idl
+[1.001s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/msg/CoordinateList.idl
+[1.001s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/msg/Arr.msg
+[1.001s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/msg/Arrofarr.msg
+[1.002s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/msg/Coordinate.msg
+[1.003s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/msg/CoordinateList.msg
+[1.003s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/ament_index/resource_index/package_run_dependencies/sdc_msgs
+[1.003s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/ament_index/resource_index/parent_prefix_path/sdc_msgs
+[1.003s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/environment/ament_prefix_path.sh
+[1.003s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/environment/ament_prefix_path.dsv
+[1.005s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/environment/path.sh
+[1.005s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/environment/path.dsv
+[1.005s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/local_setup.bash
+[1.005s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/local_setup.sh
+[1.005s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/local_setup.zsh
+[1.005s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/local_setup.dsv
+[1.006s] -- Installing: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/package.dsv
+[1.006s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/ament_index/resource_index/packages/sdc_msgs
+[1.006s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/export_sdc_msgs__rosidl_generator_cExport.cmake
+[1.006s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/export_sdc_msgs__rosidl_generator_cExport-noconfig.cmake
+[1.006s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/export_sdc_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[1.006s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/export_sdc_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[1.006s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/export_sdc_msgs__rosidl_generator_cppExport.cmake
+[1.006s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/export_sdc_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[1.007s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/export_sdc_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[1.007s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgs__rosidl_typesupport_introspection_cExport.cmake
+[1.007s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[1.008s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgs__rosidl_typesupport_cExport.cmake
+[1.008s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[1.008s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[1.008s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[1.009s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgs__rosidl_typesupport_cppExport.cmake
+[1.009s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[1.010s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/export_sdc_msgs__rosidl_generator_pyExport.cmake
+[1.010s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/export_sdc_msgs__rosidl_generator_pyExport-noconfig.cmake
+[1.011s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/rosidl_cmake-extras.cmake
+[1.011s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.012s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.015s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[1.016s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[1.016s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[1.016s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[1.016s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgsConfig.cmake
+[1.016s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake/sdc_msgsConfig-version.cmake
+[1.016s] -- Up-to-date: /home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/package.xml
+[1.024s] Invoked command in '/home/beam/autonomous-stack-sdc/build/sdc_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake --install /home/beam/autonomous-stack-sdc/build/sdc_msgs

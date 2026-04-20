@@ -1,0 +1,34 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from sdc_msgs/msg/Coordinate.msg
+// generated code does not contain a copyright notice
+
+
+module sdc_msgs {
+  module msg {
+    struct Coordinate {
+      uint8 size;
+
+      uint8 reconsize;
+
+      float x;
+
+      float y;
+
+      float z;
+
+      float colour;
+
+      sequence<float> left;
+
+      sequence<float> right;
+
+      sequence<float> front;
+
+      sequence<float> back;
+
+      sequence<float> top;
+
+      sequence<float> bottom;
+    };
+  };
+};

@@ -1,0 +1,12 @@
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/uninstall.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/mapping1_uninstall.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/coloredMapping.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/colorMapping.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/colorMappingwoRTab.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/test.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/edit_cache.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/rebuild_cache.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/list_install_components.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/install.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/install/local.dir
+/home/beam/autonomous-stack-sdc/build/mapping1/CMakeFiles/install/strip.dir

@@ -1,0 +1,104 @@
+[0.080s] Invoking command in '/home/beam/autonomous-stack-sdc/build/path_planning1': CMAKE_PREFIX_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs:/home/beam/autonomous-stack-sdc/install/yolo_bringup:/home/beam/autonomous-stack-sdc/install/yolo_msgs:/home/beam/autonomous-stack-sdc/install/path_planning1:/home/beam/autonomous-stack-sdc/install/mapping1:/home/beam/autonomous-stack-sdc/install/ground_removal:/home/beam/autonomous-stack-sdc/install/clustering:/home/beam/autonomous-stack-sdc/install/odometry:/home/beam/autonomous-stack-sdc/install/control:/home/beam/lidar_ws/install/rslidar_sdk:/home/beam/lidar_ws/install/rslidar_msg:/home/beam/wa/install/eufs_sensors:/home/beam/wa/install/eufs_plugins:/home/beam/wa/install/eufs_models:/home/beam/wa/install/eufs_msgs:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble LD_LIBRARY_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs/lib:/home/beam/autonomous-stack-sdc/install/yolo_msgs/lib:/home/beam/lidar_ws/install/rslidar_msg/lib:/home/beam/wa/install/eufs_plugins/lib:/home/beam/wa/install/eufs_models/lib:/home/beam/wa/install/eufs_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake /home/beam/autonomous-stack-sdc/path_planning1 -DCMAKE_INSTALL_PREFIX=/home/beam/autonomous-stack-sdc/install/path_planning1
+[0.228s] -- The C compiler identification is GNU 11.4.0
+[0.592s] -- The CXX compiler identification is GNU 11.4.0
+[0.614s] -- Detecting C compiler ABI info
+[0.865s] -- Detecting C compiler ABI info - done
+[0.893s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.894s] -- Detecting C compile features
+[0.894s] -- Detecting C compile features - done
+[0.905s] -- Detecting CXX compiler ABI info
+[1.366s] -- Detecting CXX compiler ABI info - done
+[1.402s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.404s] -- Detecting CXX compile features
+[1.406s] -- Detecting CXX compile features - done
+[1.423s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.905s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.088s] -- Found rclcpp: 16.0.16 (/opt/ros/humble/share/rclcpp/cmake)
+[2.139s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.145s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.154s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.166s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.184s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.231s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[2.234s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.341s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[2.372s] -- Found FastRTPS: /opt/ros/humble/include  
+[2.428s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.440s] -- Looking for pthread.h
+[2.528s] -- Looking for pthread.h - found
+[2.528s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.623s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[2.624s] -- Found Threads: TRUE  
+[2.680s] -- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)
+[2.683s] -- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+[2.712s] -- Found tf2: 0.25.17 (/opt/ros/humble/share/tf2/cmake)
+[2.725s] -- Found tf2_ros: 0.25.17 (/opt/ros/humble/share/tf2_ros/cmake)
+[2.810s] -- Found sdc_msgs: 0.0.0 (/home/beam/autonomous-stack-sdc/install/sdc_msgs/share/sdc_msgs/cmake)
+[2.839s] -- Found eufs_msgs: 2.0.0 (/home/beam/wa/install/eufs_msgs/share/eufs_msgs/cmake)
+[2.861s] -- Found visualization_msgs: 4.9.0 (/opt/ros/humble/share/visualization_msgs/cmake)
+[2.896s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[3.005s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.005s] -- Configured cppcheck include dirs: 
+[3.005s] -- Configured cppcheck exclude dirs and/or files: 
+[3.006s] -- Added test 'flake8' to check Python code syntax and style conventions
+[3.007s] -- Added test 'lint_cmake' to check CMake code style
+[3.008s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[3.010s] -- Added test 'uncrustify' to check C / C++ code style
+[3.010s] -- Configured uncrustify additional arguments: 
+[3.011s] -- Added test 'xmllint' to check XML markup files
+[3.013s] -- Configuring done
+[3.045s] -- Generating done
+[3.062s] -- Build files have been written to: /home/beam/autonomous-stack-sdc/build/path_planning1
+[3.083s] Invoked command in '/home/beam/autonomous-stack-sdc/build/path_planning1' returned '0': CMAKE_PREFIX_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs:/home/beam/autonomous-stack-sdc/install/yolo_bringup:/home/beam/autonomous-stack-sdc/install/yolo_msgs:/home/beam/autonomous-stack-sdc/install/path_planning1:/home/beam/autonomous-stack-sdc/install/mapping1:/home/beam/autonomous-stack-sdc/install/ground_removal:/home/beam/autonomous-stack-sdc/install/clustering:/home/beam/autonomous-stack-sdc/install/odometry:/home/beam/autonomous-stack-sdc/install/control:/home/beam/lidar_ws/install/rslidar_sdk:/home/beam/lidar_ws/install/rslidar_msg:/home/beam/wa/install/eufs_sensors:/home/beam/wa/install/eufs_plugins:/home/beam/wa/install/eufs_models:/home/beam/wa/install/eufs_msgs:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble LD_LIBRARY_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs/lib:/home/beam/autonomous-stack-sdc/install/yolo_msgs/lib:/home/beam/lidar_ws/install/rslidar_msg/lib:/home/beam/wa/install/eufs_plugins/lib:/home/beam/wa/install/eufs_models/lib:/home/beam/wa/install/eufs_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake /home/beam/autonomous-stack-sdc/path_planning1 -DCMAKE_INSTALL_PREFIX=/home/beam/autonomous-stack-sdc/install/path_planning1
+[3.086s] Invoking command in '/home/beam/autonomous-stack-sdc/build/path_planning1': CMAKE_PREFIX_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs:/home/beam/autonomous-stack-sdc/install/yolo_bringup:/home/beam/autonomous-stack-sdc/install/yolo_msgs:/home/beam/autonomous-stack-sdc/install/path_planning1:/home/beam/autonomous-stack-sdc/install/mapping1:/home/beam/autonomous-stack-sdc/install/ground_removal:/home/beam/autonomous-stack-sdc/install/clustering:/home/beam/autonomous-stack-sdc/install/odometry:/home/beam/autonomous-stack-sdc/install/control:/home/beam/lidar_ws/install/rslidar_sdk:/home/beam/lidar_ws/install/rslidar_msg:/home/beam/wa/install/eufs_sensors:/home/beam/wa/install/eufs_plugins:/home/beam/wa/install/eufs_models:/home/beam/wa/install/eufs_msgs:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble LD_LIBRARY_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs/lib:/home/beam/autonomous-stack-sdc/install/yolo_msgs/lib:/home/beam/lidar_ws/install/rslidar_msg/lib:/home/beam/wa/install/eufs_plugins/lib:/home/beam/wa/install/eufs_models/lib:/home/beam/wa/install/eufs_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/beam/autonomous-stack-sdc/build/path_planning1 -- -j16 -l16
+[3.170s] [ 12%] [32mBuilding CXX object CMakeFiles/midPoint.dir/src/midPoint.cpp.o[0m
+[3.170s] [ 25%] [32mBuilding CXX object CMakeFiles/coneLineViz.dir/src/coneLineViz.cpp.o[0m
+[3.171s] [ 37%] [32mBuilding CXX object CMakeFiles/midPointColored.dir/src/midPointColored.cpp.o[0m
+[3.175s] [ 50%] [32mBuilding CXX object CMakeFiles/midPointErrorPropogator.dir/src/midPointErrorPropogator.cpp.o[0m
+[17.403s] [ 62%] [32m[1mLinking CXX executable midPointColored[0m
+[17.591s] [ 75%] [32m[1mLinking CXX executable midPointErrorPropogator[0m
+[18.121s] [ 87%] [32m[1mLinking CXX executable coneLineViz[0m
+[18.484s] [ 87%] Built target midPointErrorPropogator
+[18.488s] [ 87%] Built target midPointColored
+[18.791s] [ 87%] Built target coneLineViz
+[24.639s] [100%] [32m[1mLinking CXX executable midPoint[0m
+[25.646s] [100%] Built target midPoint
+[25.660s] Invoked command in '/home/beam/autonomous-stack-sdc/build/path_planning1' returned '0': CMAKE_PREFIX_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs:/home/beam/autonomous-stack-sdc/install/yolo_bringup:/home/beam/autonomous-stack-sdc/install/yolo_msgs:/home/beam/autonomous-stack-sdc/install/path_planning1:/home/beam/autonomous-stack-sdc/install/mapping1:/home/beam/autonomous-stack-sdc/install/ground_removal:/home/beam/autonomous-stack-sdc/install/clustering:/home/beam/autonomous-stack-sdc/install/odometry:/home/beam/autonomous-stack-sdc/install/control:/home/beam/lidar_ws/install/rslidar_sdk:/home/beam/lidar_ws/install/rslidar_msg:/home/beam/wa/install/eufs_sensors:/home/beam/wa/install/eufs_plugins:/home/beam/wa/install/eufs_models:/home/beam/wa/install/eufs_msgs:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble LD_LIBRARY_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs/lib:/home/beam/autonomous-stack-sdc/install/yolo_msgs/lib:/home/beam/lidar_ws/install/rslidar_msg/lib:/home/beam/wa/install/eufs_plugins/lib:/home/beam/wa/install/eufs_models/lib:/home/beam/wa/install/eufs_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/beam/autonomous-stack-sdc/build/path_planning1 -- -j16 -l16
+[25.662s] Invoking command in '/home/beam/autonomous-stack-sdc/build/path_planning1': CMAKE_PREFIX_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs:/home/beam/autonomous-stack-sdc/install/yolo_bringup:/home/beam/autonomous-stack-sdc/install/yolo_msgs:/home/beam/autonomous-stack-sdc/install/path_planning1:/home/beam/autonomous-stack-sdc/install/mapping1:/home/beam/autonomous-stack-sdc/install/ground_removal:/home/beam/autonomous-stack-sdc/install/clustering:/home/beam/autonomous-stack-sdc/install/odometry:/home/beam/autonomous-stack-sdc/install/control:/home/beam/lidar_ws/install/rslidar_sdk:/home/beam/lidar_ws/install/rslidar_msg:/home/beam/wa/install/eufs_sensors:/home/beam/wa/install/eufs_plugins:/home/beam/wa/install/eufs_models:/home/beam/wa/install/eufs_msgs:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble LD_LIBRARY_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs/lib:/home/beam/autonomous-stack-sdc/install/yolo_msgs/lib:/home/beam/lidar_ws/install/rslidar_msg/lib:/home/beam/wa/install/eufs_plugins/lib:/home/beam/wa/install/eufs_models/lib:/home/beam/wa/install/eufs_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/beam/autonomous-stack-sdc/build/path_planning1
+[25.671s] -- Install configuration: ""
+[25.671s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/lib/path_planning1/midPoint
+[25.678s] -- Set runtime path of "/home/beam/autonomous-stack-sdc/install/path_planning1/lib/path_planning1/midPoint" to ""
+[25.678s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/lib/path_planning1/midPointColored
+[25.682s] -- Set runtime path of "/home/beam/autonomous-stack-sdc/install/path_planning1/lib/path_planning1/midPointColored" to ""
+[25.682s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/lib/path_planning1/midPointErrorPropogator
+[25.687s] -- Set runtime path of "/home/beam/autonomous-stack-sdc/install/path_planning1/lib/path_planning1/midPointErrorPropogator" to ""
+[25.687s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//launch
+[25.687s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//launch/.vscode
+[25.687s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//launch/.vscode/settings.json
+[25.688s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//launch/.vscode/c_cpp_properties.json
+[25.688s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//launch/midPointColored.launch.py
+[25.689s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//launch/midPoint.launch.py
+[25.689s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//launch/midPointErrorPropogator.launch.py
+[25.690s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//config
+[25.690s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//config/midPointErrorPropogator_params.yaml
+[25.691s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//config/midPoint_params.yaml
+[25.692s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1//config/midPointColored_params.yaml
+[25.692s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/lib/path_planning1/coneLineViz
+[25.696s] -- Set runtime path of "/home/beam/autonomous-stack-sdc/install/path_planning1/lib/path_planning1/coneLineViz" to ""
+[25.697s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/lib/path_planning1/midPointOriginal.py
+[25.697s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/ament_index/resource_index/package_run_dependencies/path_planning1
+[25.697s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/ament_index/resource_index/parent_prefix_path/path_planning1
+[25.697s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/environment/ament_prefix_path.sh
+[25.698s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/environment/ament_prefix_path.dsv
+[25.698s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/environment/path.sh
+[25.698s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/environment/path.dsv
+[25.698s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/local_setup.bash
+[25.698s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/local_setup.sh
+[25.698s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/local_setup.zsh
+[25.698s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/local_setup.dsv
+[25.699s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/package.dsv
+[25.699s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/ament_index/resource_index/packages/path_planning1
+[25.699s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/cmake/path_planning1Config.cmake
+[25.699s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/cmake/path_planning1Config-version.cmake
+[25.699s] -- Installing: /home/beam/autonomous-stack-sdc/install/path_planning1/share/path_planning1/package.xml
+[25.702s] Invoked command in '/home/beam/autonomous-stack-sdc/build/path_planning1' returned '0': CMAKE_PREFIX_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs:/home/beam/autonomous-stack-sdc/install/yolo_bringup:/home/beam/autonomous-stack-sdc/install/yolo_msgs:/home/beam/autonomous-stack-sdc/install/path_planning1:/home/beam/autonomous-stack-sdc/install/mapping1:/home/beam/autonomous-stack-sdc/install/ground_removal:/home/beam/autonomous-stack-sdc/install/clustering:/home/beam/autonomous-stack-sdc/install/odometry:/home/beam/autonomous-stack-sdc/install/control:/home/beam/lidar_ws/install/rslidar_sdk:/home/beam/lidar_ws/install/rslidar_msg:/home/beam/wa/install/eufs_sensors:/home/beam/wa/install/eufs_plugins:/home/beam/wa/install/eufs_models:/home/beam/wa/install/eufs_msgs:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble LD_LIBRARY_PATH=/home/beam/autonomous-stack-sdc/install/sdc_msgs/lib:/home/beam/autonomous-stack-sdc/install/yolo_msgs/lib:/home/beam/lidar_ws/install/rslidar_msg/lib:/home/beam/wa/install/eufs_plugins/lib:/home/beam/wa/install/eufs_models/lib:/home/beam/wa/install/eufs_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/beam/autonomous-stack-sdc/build/path_planning1

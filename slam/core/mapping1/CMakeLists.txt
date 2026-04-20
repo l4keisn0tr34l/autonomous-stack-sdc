@@ -12,12 +12,12 @@ find_package(nav_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 find_package(message_filters REQUIRED)
 find_package(sdc_msgs REQUIRED)
 find_package(eufs_msgs REQUIRED)
 
 # Executables
-
 
 add_executable(coloredMapping src/coloredMapping.cpp)
 ament_target_dependencies(coloredMapping
@@ -31,33 +31,44 @@ ament_target_dependencies(coloredMapping
   eufs_msgs
 )
 
-# --- NEW EXECUTABLE ADDED HERE ---
 add_executable(colorMapping src/colorMapping.cpp)
 ament_target_dependencies(colorMapping
   rclcpp
-  nav_msgs
+  sdc_msgs
   visualization_msgs
+  nav_msgs
+  message_filters
   tf2
   tf2_ros
-  message_filters
+  tf2_geometry_msgs
+  eufs_msgs
+)
+
+# --- NEW EXECUTABLE ADDED HERE ---
+add_executable(colorMappingwoRTab src/colorMappingwoRTab.cpp)
+ament_target_dependencies(colorMappingwoRTab
+  rclcpp
   sdc_msgs
+  visualization_msgs
+  nav_msgs
+  message_filters
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
   eufs_msgs
 )
 # ---------------------------------
 
 # Install
 
+# --- COMBINED INSTALL RULE ---
 install(TARGETS
   coloredMapping
-  DESTINATION lib/${PROJECT_NAME}
-)
-
-# --- NEW INSTALL RULE ADDED HERE ---
-install(TARGETS
   colorMapping
+  colorMappingwoRTab
   DESTINATION lib/${PROJECT_NAME}
 )
-# -----------------------------------
+# -----------------------------
 
 install(DIRECTORY launch config
   DESTINATION share/${PROJECT_NAME}/

@@ -16,7 +16,7 @@ public:
     this->declare_parameter<string>("topicNonGround", "/nonground");
     this->declare_parameter<float>("heightLidar", 0.7);
     this->declare_parameter<float>("leftRightRotation", 0.0);
-    this->declare_parameter<float>("frontBackRotation", -0.09995);
+    this->declare_parameter<float>("frontBackRotation", -0.086);
     this->declare_parameter<string>("frameLidar", "robosense");
     this->declare_parameter<string>("topicLidar", "/rslidar_points");
     this->declare_parameter<bool>("applyLimit", false);
@@ -95,9 +95,9 @@ private:
       float dist = sqrtf((pt.x * pt.x) + (pt.y*pt.y));
       if(applyLimit_){ if(pt.y >leftLimit_ || pt.y<-rightLimit_ || pt.z >topLimit_ || dist > distanceLimit_) return;}
       float groundLimit = expf(verticalInclinationFactor_*pt.x) - 1;
-      float distance = 25; 
+      float distance = 29; 
 
-      if(pt.z > -heightLidar_ + groundLimit && pow(pt.x, 2)+ pow(pt.y,2) + pow(pt.z, 2) < distance) local_clouds.local().points.push_back(pt);
+      if(pt.z > -heightLidar_ + groundLimit /* && pow(pt.x, 2)+ pow(pt.y,2) + pow(pt.z, 2) < distance*/ ) local_clouds.local().points.push_back(pt);
       
 
     });

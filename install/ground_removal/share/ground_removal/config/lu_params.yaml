@@ -1,0 +1,33 @@
+lu:
+  ros__parameters:
+    #-----------node parameters-----------
+    use_sim_time: True
+    
+    #-----------lidar parameters----------
+    heightLidar: 0.8
+    startAngleLidar: 0.5235987756   # pi/6
+    endAngleLidar: 2.617993878      # 5*pi/6
+    frameLidar: "rslidar"
+    topicLidar: "/rslidar_points"
+
+    #---------algorithm parameters--------
+    sectorAngle: 0.0654498469      # pi/48
+    ringLength: 0.1
+    startRing: 0
+    lastRing: 160
+    removalThresh: 0.15
+
+    #----------------limits--------------
+    applyLimit: false
+    leftLimit: 5.0
+    rightLimit: 5.0
+    topLimit: 2.0
+
+    #----take average of pNaught points---
+    applyAverage: false
+    pNaught: 30
+    tau: 2.0
+
+    #--------visualization params----------
+    enablePlaneVis: true
+    enableRingSectorVis: true

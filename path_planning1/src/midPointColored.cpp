@@ -1,40 +1,73 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sdc_msgs/msg/arr.hpp>
 #include <sdc_msgs/msg/arrofarr.hpp>
+#include <nav_msgs/msg/odometry.hpp>
+
+// Message Filters for synchronization
+#include <message_filters/subscriber.h>
+#include <message_filters/synchronizer.h>
+#include <message_filters/sync_policies/approximate_time.h>
+
+// TF2 for Quaternion to Euler (Yaw) conversion
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2/LinearMath/Matrix3x3.h>
+
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include <string>
 
 using std::placeholders::_1;
+using std::placeholders::_2;
 using namespace std;
 
 class midPointColoredPathPlanningNode : public rclcpp::Node {
 public:
     midPointColoredPathPlanningNode() : Node("midPointColored") {
         
+        // Parameters
+        this->declare_parameter<string>("topicOdom", "/odom");
         this->declare_parameter<string>("topicMapArr", "/map_arr");
         this->declare_parameter<string>("topicConePair", "/cone_pair");
+        
+        topicOdom_ = this->get_parameter("topicOdom").as_string();
         topicMapArr_ = this->get_parameter("topicMapArr").as_string();
         topicConePair_ = this->get_parameter("topicConePair").as_string();
 
-        // global variables
+        // Global variables
         followingPoint = make_pair(-1000.0, -1000.0);
 
-        // Standard Subscriber (No Synchronizer needed for testing without odom)
-        mapArr_sub_ = this->create_subscription<sdc_msgs::msg::Arrofarr>(
-            topicMapArr_, 10, std::bind(&midPointColoredPathPlanningNode::MapCallback, this, _1));
+        // 1. Initialize Message Filter Subscribers
+        mapArr_sub_.subscribe(this, topicMapArr_);
+        odom_sub_.subscribe(this, topicOdom_);
 
+        // 2. Initialize the Synchronizer cleanly
+        uint32_t queue_size = 10;
+        sync_ = std::make_shared<message_filters::Synchronizer<SyncPolicy>>(
+            SyncPolicy(queue_size), mapArr_sub_, odom_sub_);
+        
+        // 3. Register the callback
+        sync_->registerCallback(std::bind(&midPointColoredPathPlanningNode::SyncCallback, this, _1, _2));
+
+        // Publisher
         conePair_pub_ = this->create_publisher<sdc_msgs::msg::Arrofarr>(topicConePair_, 1);
         
-        RCLCPP_INFO(this->get_logger(), "Midpoint Colored Path Planning Node Initialized (Testing Mode: No Odom)");
+        RCLCPP_INFO(this->get_logger(), "Midpoint Colored Path Planning Node Initialized (With Odometry Sync)");
     }
 
 private:
-    string topicConePair_, topicMapArr_;
+    string topicOdom_, topicMapArr_, topicConePair_;
     sdc_msgs::msg::Arrofarr conePair_msg;
     pair<float, float> followingPoint;
 
-    rclcpp::Subscription<sdc_msgs::msg::Arrofarr>::SharedPtr mapArr_sub_;
+    // Define the synchronization policy
+    typedef message_filters::sync_policies::ApproximateTime<sdc_msgs::msg::Arrofarr, nav_msgs::msg::Odometry> SyncPolicy;
+
+    // Subscribers and Synchronizer
+    message_filters::Subscriber<sdc_msgs::msg::Arrofarr> mapArr_sub_;
+    message_filters::Subscriber<nav_msgs::msg::Odometry> odom_sub_;
+    std::shared_ptr<message_filters::Synchronizer<SyncPolicy>> sync_;
+
     rclcpp::Publisher<sdc_msgs::msg::Arrofarr>::SharedPtr conePair_pub_;
 
     bool isInFront(float xc, float yc, float yaw, float x, float y) {
@@ -50,13 +83,26 @@ private:
         return ((x1 - x2) * (x1 - x2)) + ((y1 - y2) * (y1 - y2));
     }
 
-    void MapCallback(const sdc_msgs::msg::Arrofarr::SharedPtr mapArr_msg) {
+    // Updated Callback to receive both synchronized messages
+    void SyncCallback(const sdc_msgs::msg::Arrofarr::ConstSharedPtr& mapArr_msg,
+                      const nav_msgs::msg::Odometry::ConstSharedPtr& odom_msg) {
         
-        // --- TESTING MODE: Assumed Stationary Odometry ---
-        float carX = 0.0;
-        float carY = 0.0;
-        float carYaw = 0.0;
-        // -------------------------------------------------
+        // --- REAL ODOMETRY VALUES ---
+        float carX = odom_msg->pose.pose.position.x;
+        float carY = odom_msg->pose.pose.position.y;
+
+        // Convert Quaternion to Euler to get Yaw
+        tf2::Quaternion q(
+            odom_msg->pose.pose.orientation.x,
+            odom_msg->pose.pose.orientation.y,
+            odom_msg->pose.pose.orientation.z,
+            odom_msg->pose.pose.orientation.w
+        );
+        tf2::Matrix3x3 m(q);
+        double roll, pitch, yaw;
+        m.getRPY(roll, pitch, yaw);
+        float carYaw = yaw;
+        // -----------------------------
 
         sdc_msgs::msg::Arr selectedBlueCone;
         sdc_msgs::msg::Arr selectedYellowCone;
@@ -93,7 +139,7 @@ private:
         }
 
         // Trigger logic to publish new cone pair
-        if (blueFound && yellowFound /* && !isInFront(carX, carY, carYaw, followingPoint.first, followingPoint.second)*/ ) {
+        if (blueFound && yellowFound) {
             
             followingPoint.first = (selectedBlueCone.data[0] + selectedYellowCone.data[0]) / 2.0;
             followingPoint.second = (selectedBlueCone.data[1] + selectedYellowCone.data[1]) / 2.0;

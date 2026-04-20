@@ -3,58 +3,109 @@
 #include <sdc_msgs/msg/arrofarr.hpp>
 #include <visualization_msgs/msg/marker_array.hpp>
 #include <visualization_msgs/msg/marker.hpp>
+#include <nav_msgs/msg/odometry.hpp>
+
+// QoS Profiles
+#include <rmw/qos_profiles.h>
+
+// Message Filters for synchronization
+#include <message_filters/subscriber.h>
+#include <message_filters/sync_policies/approximate_time.h>
+#include <message_filters/synchronizer.h>
+
+// TF2 for Quaternion to Euler (Yaw) conversion
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2/LinearMath/Matrix3x3.h>
+
 #include <vector>
 #include <cmath>
+#include <string>
 
 using std::placeholders::_1;
+using std::placeholders::_2;
 
 class RealLifeMappingNode : public rclcpp::Node {
 public:
     RealLifeMappingNode() : Node("real_life_mapping") {
         // Parameters
         this->declare_parameter<std::string>("topicClusters", "/mapping_input");
+        this->declare_parameter<std::string>("topicOdom", "/odom");
         this->declare_parameter<std::string>("topicMapArr", "/map_arr");
         this->declare_parameter<std::string>("topicMapVis", "/map_vis");
         this->declare_parameter<double>("matchDistanceThresh", 1.5);
         this->declare_parameter<double>("coneDistanceThresh", 15.0);
 
         topicClusters_ = this->get_parameter("topicClusters").as_string();
+        topicOdom_ = this->get_parameter("topicOdom").as_string();
         topicMapArr_ = this->get_parameter("topicMapArr").as_string();
         topicMapVis_ = this->get_parameter("topicMapVis").as_string();
 
         firstMsg = true;
 
-        // Standard ROS 2 Subscription (No Synchronizer needed for testing)
-        clusters_sub_ = this->create_subscription<sdc_msgs::msg::Arrofarr>(
-            topicClusters_, 10, std::bind(&RealLifeMappingNode::SyncCallback, this, _1));
+        // 1. Initialize Message Filter Subscribers with SensorData QoS
+        // This is critical for listening to topics like /odom and LiDAR/Camera outputs
+        rmw_qos_profile_t qos_profile = rmw_qos_profile_sensor_data;
+        
+        clusters_sub_.subscribe(this, topicClusters_, qos_profile);
+        odom_sub_.subscribe(this, topicOdom_, qos_profile);
+
+        // 2. Initialize the Synchronizer with an ApproximateTime policy
+        // Increased queue size to 100 to handle different publish rates (e.g., fast odom vs slow clusters)
+        sync_ = std::make_shared<message_filters::Synchronizer<SyncPolicy>>(
+            SyncPolicy(100), clusters_sub_, odom_sub_);
+        
+        // 3. Register the callback that takes BOTH synchronized messages
+        sync_->registerCallback(std::bind(&RealLifeMappingNode::SyncCallback, this, _1, _2));
 
         // Publishers
         mapArr_pub_ = this->create_publisher<sdc_msgs::msg::Arrofarr>(topicMapArr_, 1);
         mapVis_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>(topicMapVis_, 1);
         
-        RCLCPP_INFO(this->get_logger(), "Real-life Mapping Node Initialized (Testing Mode: No Odom)");
+        RCLCPP_INFO(this->get_logger(), "Real-life Mapping Node Initialized (With Odometry Sync)");
     }
 
 private:
-    std::string topicClusters_, topicMapArr_, topicMapVis_;
+    std::string topicClusters_, topicOdom_, topicMapArr_, topicMapVis_;
     sdc_msgs::msg::Arrofarr mapArr;
     bool firstMsg;
 
-    rclcpp::Subscription<sdc_msgs::msg::Arrofarr>::SharedPtr clusters_sub_;
+    // Define the synchronization policy
+    typedef message_filters::sync_policies::ApproximateTime<sdc_msgs::msg::Arrofarr, nav_msgs::msg::Odometry> SyncPolicy;
+    
+    // Message Filter Subscribers and Synchronizer
+    message_filters::Subscriber<sdc_msgs::msg::Arrofarr> clusters_sub_;
+    message_filters::Subscriber<nav_msgs::msg::Odometry> odom_sub_;
+    std::shared_ptr<message_filters::Synchronizer<SyncPolicy>> sync_;
+
     rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr mapVis_pub_;
     rclcpp::Publisher<sdc_msgs::msg::Arrofarr>::SharedPtr mapArr_pub_;
 
-    void SyncCallback(const sdc_msgs::msg::Arrofarr::SharedPtr clusters_msg) {
+    // Updated Callback to receive both synchronized messages
+    void SyncCallback(const sdc_msgs::msg::Arrofarr::ConstSharedPtr& clusters_msg,
+                      const nav_msgs::msg::Odometry::ConstSharedPtr& odom_msg) {
         
         double matchThresh = this->get_parameter("matchDistanceThresh").as_double();
         double coneThresh = this->get_parameter("coneDistanceThresh").as_double();
 
-        // --- TESTING MODE: Assumed Odometry Values ---
-        // When you are ready to use real odometry, replace these with the data from odom_msg
-        double odom_x = 0.0;
-        double odom_y = 0.0;
-        double yaw = 0.0;
-        // ---------------------------------------------
+        // --- REAL ODOMETRY VALUES ---
+        double odom_x = odom_msg->pose.pose.position.x;
+        double odom_y = odom_msg->pose.pose.position.y;
+
+        // Convert Quaternion to Euler to get Yaw
+        tf2::Quaternion q(
+            odom_msg->pose.pose.orientation.x,
+            odom_msg->pose.pose.orientation.y,
+            odom_msg->pose.pose.orientation.z,
+            odom_msg->pose.pose.orientation.w
+        );
+        tf2::Matrix3x3 m(q);
+        double roll, pitch, yaw;
+        m.getRPY(roll, pitch, yaw);
+        // -----------------------------
+
+        // Upgraded logging to standard ROS 2 logger
+        RCLCPP_INFO(this->get_logger(), "Sync Triggered: odom_x=%.2f, odom_y=%.2f, clusters_count=%zu", 
+                    odom_x, odom_y, clusters_msg->data.size());
 
         for (const auto &cone_data : clusters_msg->data) {
             // Check message integrity: expect [x, y, color]
@@ -93,7 +144,7 @@ private:
                 }
             }
 
-            // Original logic restored: Erase on color conflict
+            // Erase on color conflict
             if (closestIdx != -1 && minDistSq <= (matchThresh * matchThresh)) {
                 if (mapArr.data[closestIdx].data[2] == color || color == 4.0) {
                     continue; // Colors match, or new detection is unknown. Ignore new detection.
@@ -103,7 +154,7 @@ private:
                 }
             }
 
-            // Add the new detection (applies to brand new cones, OR cones that just had their old versions erased)
+            // Add the new detection
             sdc_msgs::msg::Arr newPoint;
             newPoint.data = {gx, gy, color};
             mapArr.data.push_back(newPoint);
@@ -127,7 +178,7 @@ private:
         delete_marker.action = visualization_msgs::msg::Marker::DELETEALL;
         marker_array.markers.push_back(delete_marker);
 
-        // 2. Start cone IDs at 1 to avoid conflicting with the delete marker (which is 0)
+        // 2. Start cone IDs at 1
         int id = 1; 
         
         for (const auto &cone : mapArr.data) {
@@ -135,8 +186,8 @@ private:
             m.header.frame_id = "map";
             m.header.stamp = this->get_clock()->now();
             
-            m.ns = "cones";   // <-- Added namespace
-            m.id = id++;      // <-- Now starts at 1, 2, 3...
+            m.ns = "cones";   
+            m.id = id++;      
             
             m.type = visualization_msgs::msg::Marker::CYLINDER;
             m.action = visualization_msgs::msg::Marker::ADD;

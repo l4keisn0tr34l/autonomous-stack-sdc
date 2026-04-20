@@ -1,0 +1,8 @@
+source;share/clustering/hook/cmake_prefix_path.ps1
+source;share/clustering/hook/cmake_prefix_path.dsv
+source;share/clustering/hook/cmake_prefix_path.sh
+source;share/clustering/local_setup.bash
+source;share/clustering/local_setup.dsv
+source;share/clustering/local_setup.ps1
+source;share/clustering/local_setup.sh
+source;share/clustering/local_setup.zsh

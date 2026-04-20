@@ -1,0 +1,56 @@
+running egg_info
+creating ../../build/sensorfusion/sensorfusion.egg-info
+writing ../../build/sensorfusion/sensorfusion.egg-info/PKG-INFO
+writing dependency_links to ../../build/sensorfusion/sensorfusion.egg-info/dependency_links.txt
+writing entry points to ../../build/sensorfusion/sensorfusion.egg-info/entry_points.txt
+writing requirements to ../../build/sensorfusion/sensorfusion.egg-info/requires.txt
+writing top-level names to ../../build/sensorfusion/sensorfusion.egg-info/top_level.txt
+writing manifest file '../../build/sensorfusion/sensorfusion.egg-info/SOURCES.txt'
+reading manifest file '../../build/sensorfusion/sensorfusion.egg-info/SOURCES.txt'
+writing manifest file '../../build/sensorfusion/sensorfusion.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/beam/autonomous-stack-sdc/build/sensorfusion/build
+creating /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib
+creating /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion
+copying sensorfusion/__init__.py -> /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion
+creating /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes
+copying sensorfusion/nodes/fusion_node_old.py -> /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes
+copying sensorfusion/nodes/coord_to_arr.py -> /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes
+copying sensorfusion/nodes/debug_overlay.py -> /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes
+copying sensorfusion/nodes/fusion_test.py -> /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes
+copying sensorfusion/nodes/__init__.py -> /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes
+copying sensorfusion/nodes/fusion_node.py -> /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes
+running install
+running install_lib
+creating /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion
+creating /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes
+copying /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes/fusion_node_old.py -> /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes
+copying /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes/coord_to_arr.py -> /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes
+copying /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes/debug_overlay.py -> /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes
+copying /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes/fusion_test.py -> /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes
+copying /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes/__init__.py -> /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes
+copying /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/nodes/fusion_node.py -> /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes
+copying /home/beam/autonomous-stack-sdc/build/sensorfusion/build/lib/sensorfusion/__init__.py -> /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion
+byte-compiling /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes/fusion_node_old.py to fusion_node_old.cpython-310.pyc
+byte-compiling /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes/coord_to_arr.py to coord_to_arr.cpython-310.pyc
+byte-compiling /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes/debug_overlay.py to debug_overlay.cpython-310.pyc
+byte-compiling /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes/fusion_test.py to fusion_test.cpython-310.pyc
+byte-compiling /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/nodes/fusion_node.py to fusion_node.cpython-310.pyc
+byte-compiling /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/beam/autonomous-stack-sdc/install/sensorfusion/share/ament_index
+creating /home/beam/autonomous-stack-sdc/install/sensorfusion/share/ament_index/resource_index
+creating /home/beam/autonomous-stack-sdc/install/sensorfusion/share/ament_index/resource_index/packages
+copying resource/sensorfusion -> /home/beam/autonomous-stack-sdc/install/sensorfusion/share/ament_index/resource_index/packages
+copying package.xml -> /home/beam/autonomous-stack-sdc/install/sensorfusion/share/sensorfusion
+running install_egg_info
+Copying ../../build/sensorfusion/sensorfusion.egg-info to /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/python3.10/site-packages/sensorfusion-0.0.0-py3.10.egg-info
+running install_scripts
+Installing coord_to_arr script to /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/sensorfusion
+Installing debug_overlay script to /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/sensorfusion
+Installing fusion_test script to /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/sensorfusion
+Installing sensor_fusion_node script to /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/sensorfusion
+Installing sensor_fusion_node_old script to /home/beam/autonomous-stack-sdc/install/sensorfusion/lib/sensorfusion
+writing list of installed files to '/home/beam/autonomous-stack-sdc/build/sensorfusion/install.log'

@@ -1,0 +1,7 @@
+midPoint:
+  ros__parameters:
+    topicOdom: "/odom"
+    topicMapArr: "/map_arr"
+    topicConeCluster: "/Clusters"
+    topicConePair: "/cone_pair"
+    use_sim_time: True

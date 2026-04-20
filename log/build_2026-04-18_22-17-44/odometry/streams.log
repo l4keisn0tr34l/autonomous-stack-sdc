@@ -1,0 +1,69 @@
+[0.013s] Invoking command in '/home/beam/autonomous-stack-sdc/build/odometry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake /home/beam/autonomous-stack-sdc/slam/core/odometry -DCMAKE_INSTALL_PREFIX=/home/beam/autonomous-stack-sdc/install/odometry
+[0.062s] -- The C compiler identification is GNU 11.4.0
+[0.112s] -- The CXX compiler identification is GNU 11.4.0
+[0.118s] -- Detecting C compiler ABI info
+[0.184s] -- Detecting C compiler ABI info - done
+[0.190s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.190s] -- Detecting C compile features
+[0.191s] -- Detecting C compile features - done
+[0.193s] -- Detecting CXX compiler ABI info
+[0.266s] -- Detecting CXX compiler ABI info - done
+[0.272s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.272s] -- Detecting CXX compile features
+[0.272s] -- Detecting CXX compile features - done
+[0.275s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.414s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.504s] -- Found rclcpp: 16.0.16 (/opt/ros/humble/share/rclcpp/cmake)
+[0.544s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.550s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.557s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.568s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.582s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.623s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.626s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.722s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.749s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.792s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.801s] -- Looking for pthread.h
+[0.872s] -- Looking for pthread.h - found
+[0.872s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.942s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.943s] -- Found Threads: TRUE  
+[0.989s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.014s] -- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.028s] -- Found tf2: 0.25.17 (/opt/ros/humble/share/tf2/cmake)
+[1.039s] -- Found tf2_ros: 0.25.17 (/opt/ros/humble/share/tf2_ros/cmake)
+[1.121s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.187s] -- Configuring done
+[1.199s] -- Generating done
+[1.203s] -- Build files have been written to: /home/beam/autonomous-stack-sdc/build/odometry
+[1.220s] Invoked command in '/home/beam/autonomous-stack-sdc/build/odometry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake /home/beam/autonomous-stack-sdc/slam/core/odometry -DCMAKE_INSTALL_PREFIX=/home/beam/autonomous-stack-sdc/install/odometry
+[1.221s] Invoking command in '/home/beam/autonomous-stack-sdc/build/odometry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake --build /home/beam/autonomous-stack-sdc/build/odometry -- -j16 -l16
+[1.280s] [ 50%] [32mBuilding CXX object CMakeFiles/deadReckoning.dir/src/deadReckoning.cpp.o[0m
+[26.444s] [100%] [32m[1mLinking CXX executable deadReckoning[0m
+[27.623s] [100%] Built target deadReckoning
+[27.642s] Invoked command in '/home/beam/autonomous-stack-sdc/build/odometry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake --build /home/beam/autonomous-stack-sdc/build/odometry -- -j16 -l16
+[27.645s] Invoking command in '/home/beam/autonomous-stack-sdc/build/odometry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake --install /home/beam/autonomous-stack-sdc/build/odometry
+[27.658s] -- Install configuration: ""
+[27.658s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/lib/odometry/deadReckoning
+[27.669s] -- Set runtime path of "/home/beam/autonomous-stack-sdc/install/odometry/lib/odometry/deadReckoning" to ""
+[27.670s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry//launch
+[27.670s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry//launch/deadReckoning.launch.py
+[27.671s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry//config
+[27.671s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry//config/deadReckoning_params.yaml
+[27.672s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/ament_index/resource_index/package_run_dependencies/odometry
+[27.672s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/ament_index/resource_index/parent_prefix_path/odometry
+[27.673s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/environment/ament_prefix_path.sh
+[27.673s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/environment/ament_prefix_path.dsv
+[27.674s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/environment/path.sh
+[27.674s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/environment/path.dsv
+[27.674s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/local_setup.bash
+[27.675s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/local_setup.sh
+[27.675s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/local_setup.zsh
+[27.676s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/local_setup.dsv
+[27.676s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/package.dsv
+[27.677s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/ament_index/resource_index/packages/odometry
+[27.677s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/cmake/odometryConfig.cmake
+[27.678s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/cmake/odometryConfig-version.cmake
+[27.678s] -- Installing: /home/beam/autonomous-stack-sdc/install/odometry/share/odometry/package.xml
+[27.682s] Invoked command in '/home/beam/autonomous-stack-sdc/build/odometry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/beam/autonomous-stack-sdc/install/yolo_ros:/home/beam/autonomous-stack-sdc/install/sensorfusion:/home/beam/wa/install/eufs_launcher:/home/beam/wa/install/eufs_tracks:/home/beam/wa/install/eufs_rqt:/home/beam/wa/install/eufs_racecar:/opt/ros/humble /usr/bin/cmake --install /home/beam/autonomous-stack-sdc/build/odometry
