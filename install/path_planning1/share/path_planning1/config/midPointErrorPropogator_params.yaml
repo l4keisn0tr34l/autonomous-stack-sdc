@@ -1,7 +1,0 @@
-midPointErrorPropogator:
-  ros__parameters:
-    topicConePair: "/cone_pair"
-    topicOdom: "/odom"
-    topicError: "/path_error"
-    projectAheadDistance: 2.0
-    use_sim_time: True

@@ -1,7 +1,0 @@
-[console_scripts]
-coord_to_arr = sensorfusion.nodes.coord_to_arr:main
-debug_overlay = sensorfusion.nodes.debug_overlay:main
-fusion_test = sensorfusion.nodes.fusion_test:main
-sensor_fusion_node = sensorfusion.nodes.fusion_node:main
-sensor_fusion_node_old = sensorfusion.nodes.fusion_node_old:main
-

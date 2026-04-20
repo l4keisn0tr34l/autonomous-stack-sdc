@@ -1,9 +1,0 @@
-{
-  "package_name": "sdc_msgs",
-  "non_idl_tuples": [
-    "/home/beam/autonomous-stack-sdc/sdc_msgs:msg/Arr.msg",
-    "/home/beam/autonomous-stack-sdc/sdc_msgs:msg/Arrofarr.msg",
-    "/home/beam/autonomous-stack-sdc/sdc_msgs:msg/Coordinate.msg",
-    "/home/beam/autonomous-stack-sdc/sdc_msgs:msg/CoordinateList.msg"
-  ]
-}

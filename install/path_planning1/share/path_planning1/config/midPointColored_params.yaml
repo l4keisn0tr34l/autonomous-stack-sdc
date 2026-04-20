@@ -1,6 +1,0 @@
-midPointColored:
-  ros__parameters:
-    topicOdom: "/odom"
-    topicMapArr: "/map_arr"
-    topicConePair: "/cone_pair"
-    use_sim_time: True

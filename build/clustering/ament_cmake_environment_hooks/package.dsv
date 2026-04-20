@@ -1,4 +1,0 @@
-source;share/clustering/local_setup.bash
-source;share/clustering/local_setup.dsv
-source;share/clustering/local_setup.sh
-source;share/clustering/local_setup.zsh
